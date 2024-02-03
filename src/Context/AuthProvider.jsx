@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect } from "react";
 import { createContext } from "react";
 import { auth } from "../firebase";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword } from "firebase/auth";
 const AuthContext = createContext({});
 
 // usecontext for every file
@@ -11,21 +11,23 @@ export const useAuth = () => {
 const AuthProvider = (props) => {
   const [currentUser, setCurrentUser] = useState();
 
-  //   sign up method
+  //   sign up method---------------------------------
   const auth = getAuth();
   const signUp = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
-//   useEffect(()=>{
-
-//   },[])
+// login method -------------------------------
+const login = (email,password) => {
+  return signInWithEmailAndPassword(auth,email,password)
+};
 
 //  context data
   const authData = {
     currentUser,
     setCurrentUser,
     signUp,
+    login
   };
 
   return (

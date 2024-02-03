@@ -1,6 +1,7 @@
 import {useRef,useState} from "react";
 import "./signup.css";
 import { useAuth } from "../Context/AuthProvider";  //usecontext
+import { Link } from "react-router-dom";
 
 const SignUp = () => {
 
@@ -11,7 +12,6 @@ const SignUp = () => {
 
 // context
 const authctx = useAuth();
-console.log(authctx);
 
 // usestate
 const [error,setError] = useState(false);
@@ -25,8 +25,8 @@ const handleSubmit = async(e)=>{
       return;
     }
     try{
-      const response = await authctx.signUp(emialRef.current.value,passwordRef.current.value);
-      console.log(response);
+      const currentUser = await authctx.signUp(emialRef.current.value,passwordRef.current.value);
+      authctx.setCurrentUser(currentUser);
       alert("Registration Successful,Please Login to continue")
     }catch(err){
       console.log(err);
@@ -55,6 +55,7 @@ const handleSubmit = async(e)=>{
         <br />
         <button>Sign Up</button>
       </form>
+      <p style={{marginTop: "20px"}}>Alerady have an Account? <Link to="/login">Log In</Link> </p>
     </div>
   );
 };
