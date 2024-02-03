@@ -11,9 +11,20 @@
     margin:10px 0;
 }
 
-.register-container button{
+.signupBtn{
     width:100%;
     background-color: rgba(0, 140, 255, 0.873);
     color:white;
     padding: 15px 0;
+    border:none;
+}
+.loginBtn{
+    width:100%;
+    color:white;
+    padding: 15px 0;
+    border:none;
+}
+
+.signupBtn:hover,.loginBtn:hover{
+    box-shadow: 2px 2px 2px grey;
 }

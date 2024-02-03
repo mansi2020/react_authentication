@@ -42,18 +42,18 @@ const handleSubmit = async(e)=>{
       <form action="" onSubmit={handleSubmit}>
         <label>Email</label>
         <br />
-        <input type="email" ref={emialRef}/>
+        <input type="email" ref={emialRef} required/>
         <br />
         <label>Password</label>
         <br />
-        <input type="password" ref={passwordRef}/>
+        <input type="password" ref={passwordRef} required/>
         <br />
         <label htmlFor="">Password Confirmation</label>
         <br />
-        <input type="password" ref={passwordConfirmRef}/>
+        <input type="password" ref={passwordConfirmRef} required/>
         <br />
         <br />
-        <button>Sign Up</button>
+        <button className="signupBtn">Sign Up</button>
       </form>
       <p style={{marginTop: "20px"}}>Alerady have an Account? <Link to="/login">Log In</Link> </p>
     </div>
