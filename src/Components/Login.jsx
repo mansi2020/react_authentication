@@ -59,7 +59,7 @@ const Login = () => {
         </button>
       </form>
       <p style={{ marginTop: "20px" }}>
-        Need an Account <Link to="/signup">Sign Up</Link>
+        Need an Account <Link to="/">Sign Up</Link>
       </p>
     </div>
   );
