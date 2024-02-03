@@ -1,36 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
-import SignUp from './Components/SignUp'
-import Login from './Components/Login';
-import AuthProvider from './Context/AuthProvider';
-import firebase from './firebase'
+import logo from "./logo.svg";
+import "./App.css";
+import SignUp from "./Components/SignUp";
+import Login from "./Components/Login";
+import AuthProvider from "./Context/AuthProvider";
+import firebase from "./firebase";
 
-import {
-  createBrowserRouter,
-  RouterProvider,
-  Route,
-  Link,
-} from "react-router-dom"
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 function App() {
   // router
-  const router  = createBrowserRouter([
+  const router = createBrowserRouter([
     {
-      path:"/",
-      element: <SignUp/>
+      path: "/",
+      element: <SignUp />,
     },
     {
-      path:"/login",
-      element:<Login/>
-    }
-  ])
+      path: "/login",
+      element: <Login />,
+    },
+  ]);
 
   return (
-    <div className='App'>
+    <div className="App">
       <AuthProvider>
         <RouterProvider router={router} />
       </AuthProvider>
-      
     </div>
   );
 }

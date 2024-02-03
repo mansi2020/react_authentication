@@ -1,38 +1,39 @@
-import {useRef,useState} from "react";
+import { useRef, useState } from "react";
 import "./signup.css";
-import { useAuth } from "../Context/AuthProvider";  //usecontext
+import { useAuth } from "../Context/AuthProvider"; //usecontext
 import { Link } from "react-router-dom";
 
 const SignUp = () => {
-
   // useref data of email and password
   const emialRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
 
-// context
-const authctx = useAuth();
+  // context
+  const authctx = useAuth();
 
-// usestate
-const [error,setError] = useState(false);
+  // usestate
+  const [error, setError] = useState(false);
 
-// handleSubmit
-const handleSubmit = async(e)=>{
+  // handleSubmit
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError(false);
-    if(passwordRef.current.value != passwordConfirmRef.current.value){
-      setError(true)
+    if (passwordRef.current.value != passwordConfirmRef.current.value) {
+      setError(true);
       return;
     }
-    try{
-      const currentUser = await authctx.signUp(emialRef.current.value,passwordRef.current.value);
+    try {
+      const currentUser = await authctx.signUp(
+        emialRef.current.value,
+        passwordRef.current.value
+      );
       authctx.setCurrentUser(currentUser);
-      alert("Registration Successful,Please Login to continue")
-    }catch(err){
+      alert("Registration Successful,Please Login to continue");
+    } catch (err) {
       console.log(err);
     }
-    
-}
+  };
 
   return (
     <div className="register-container">
@@ -42,20 +43,22 @@ const handleSubmit = async(e)=>{
       <form action="" onSubmit={handleSubmit}>
         <label>Email</label>
         <br />
-        <input type="email" ref={emialRef} required/>
+        <input type="email" ref={emialRef} required />
         <br />
         <label>Password</label>
         <br />
-        <input type="password" ref={passwordRef} required/>
+        <input type="password" ref={passwordRef} required />
         <br />
         <label htmlFor="">Password Confirmation</label>
         <br />
-        <input type="password" ref={passwordConfirmRef} required/>
+        <input type="password" ref={passwordConfirmRef} required />
         <br />
         <br />
         <button className="signupBtn">Sign Up</button>
       </form>
-      <p style={{marginTop: "20px"}}>Alerady have an Account? <Link to="/login">Log In</Link> </p>
+      <p style={{ marginTop: "20px" }}>
+        Alerady have an Account? <Link to="/login">Log In</Link>{" "}
+      </p>
     </div>
   );
 };

@@ -8,11 +8,11 @@ const Login = () => {
   const passwordRef = useRef();
 
   //useState data ---------------------------------
-  const [loading,setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   // context---------------------------------------------
   const authctx = useAuth();
-  
+
   // handleSubmit---------------------------------------
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,38 +23,45 @@ const Login = () => {
           emialRef.current.value,
           passwordRef.current.value
         );
-        alert("Successfully logged in")
+        alert("Successfully logged in");
         authctx.setCurrentUser(currentUser);
       } catch (err) {
-        alert("Create a New Account")
+        alert("Create a New Account");
       }
       setLoading(false);
     }, 1000);
   };
 
   return (
-   
-      <div className="register-container">
-        <h1>Log In</h1>
+    <div className="register-container">
+      <h1>Log In</h1>
+      <br />
+      <form action="" onSubmit={handleSubmit}>
+        <label>Email</label>
         <br />
-        <form action="" onSubmit={handleSubmit}>
-          <label>Email</label>
-          <br />
-          <input type="email" ref={emialRef} required/>
-          <br />
-          <label>Password</label>
-          <br />
-          <input type="password" ref={passwordRef} required/>
-          <br />
-          <br />
-          <button className="loginBtn" style={{backgroundColor : loading == true ? "rgba(0, 140, 255, 0.5)" : "rgba(0, 140, 255, 0.873)"}}>Log In</button>
-        </form>
-        <p style={{marginTop: "20px"}}>
+        <input type="email" ref={emialRef} required />
+        <br />
+        <label>Password</label>
+        <br />
+        <input type="password" ref={passwordRef} required />
+        <br />
+        <br />
+        <button
+          className="loginBtn"
+          style={{
+            backgroundColor:
+              loading == true
+                ? "rgba(0, 140, 255, 0.5)"
+                : "rgba(0, 140, 255, 0.873)",
+          }}
+        >
+          Log In
+        </button>
+      </form>
+      <p style={{ marginTop: "20px" }}>
         Need an Account <Link to="/signup">Sign Up</Link>
       </p>
-      </div>
-      
-   
+    </div>
   );
 };
 

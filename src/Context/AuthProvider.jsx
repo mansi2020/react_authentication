@@ -1,7 +1,11 @@
 import { useState, useContext, useEffect } from "react";
 import { createContext } from "react";
 import { auth } from "../firebase";
-import { getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 const AuthContext = createContext({});
 
 // usecontext for every file
@@ -17,17 +21,17 @@ const AuthProvider = (props) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
-// login method -------------------------------
-const login = (email,password) => {
-  return signInWithEmailAndPassword(auth,email,password)
-};
+  // login method -------------------------------
+  const login = (email, password) => {
+    return signInWithEmailAndPassword(auth, email, password);
+  };
 
-//  context data
+  //  context data
   const authData = {
     currentUser,
     setCurrentUser,
     signUp,
-    login
+    login,
   };
 
   return (
